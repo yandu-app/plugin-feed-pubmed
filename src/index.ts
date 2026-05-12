@@ -6,7 +6,7 @@ import type {
   FetchResult,
   FeedEntry,
   FormatCapability,
-  PaperExternalIds,
+  ItemExternalIds,
 } from '@yandu/types';
 
 class PubMedAdapter implements FeedAdapter {
@@ -158,7 +158,7 @@ class PubMedAdapter implements FeedAdapter {
     return map[month.toLowerCase()] ?? 0;
   }
 
-  resolveDownload(externalIds: PaperExternalIds): { url: string; format: string; priority: number } | null {
+  resolveDownload(externalIds: ItemExternalIds): { url: string; format: string; priority: number } | null {
     const pmid = externalIds.pmid;
     if (!pmid) return null;
     return {
