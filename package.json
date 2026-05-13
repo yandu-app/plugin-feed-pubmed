@@ -1,5 +1,5 @@
 {
-  "name": "yandu-plugin-feed-pubmed",
+  "name": "@yandu/plugin-feed-pubmed",
   "version": "1.0.0",
   "description": "Yandu plugin: PubMed Feed",
   "type": "module",
