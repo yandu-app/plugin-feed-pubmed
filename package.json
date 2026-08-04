@@ -6,7 +6,9 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "yandu": {
-    "main": "./dist/index.js"
+    "main": "./dist/index.js",
+    "worker": "./dist/worker.js",
+    "protocol": "jsonl-v1"
   },
   "files": [
     "dist"
@@ -16,13 +18,18 @@
     "prepublishOnly": "npm run build",
     "test": "npm run build && node --test test/*.test.js",
     "typecheck": "tsc --noEmit",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "prepack": "npm run test"
   },
   "devDependencies": {
-    "@yandu/types": "workspace:*",
+    "@types/node": "^22.20.1",
+    "@yandu/types": ">=0.0.7 <0.2.0",
     "typescript": "^5.6.0"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "bin": {
+    "yandu-feed-pubmed": "./dist/worker.js"
   }
 }

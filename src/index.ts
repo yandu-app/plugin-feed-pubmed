@@ -6,8 +6,15 @@ import type {
   FetchResult,
   FeedEntry,
   FormatCapability,
-  ItemExternalIds,
 } from '@yandu/types';
+
+interface CompatibleExternalIds {
+  arxiv?: string;
+  doi?: string;
+  pmid?: string;
+  ieee?: string;
+  url?: string;
+}
 
 class PubMedAdapter implements FeedAdapter {
   id = 'gov.pubmed';
@@ -158,7 +165,7 @@ class PubMedAdapter implements FeedAdapter {
     return map[month.toLowerCase()] ?? 0;
   }
 
-  resolveDownload(externalIds: ItemExternalIds): { url: string; format: string; priority: number } | null {
+  resolveDownload(externalIds: CompatibleExternalIds): { url: string; format: string; priority: number } | null {
     const pmid = externalIds.pmid;
     if (!pmid) return null;
     return {
